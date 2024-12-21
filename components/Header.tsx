@@ -36,7 +36,7 @@ export default function Header() {
             }`}>
             <nav className={`container mx-auto px-4 py-4 flex justify-between items-center ${scrolled ? 'py-2' : 'py-4'
                 }`}>
-                <Link href="/" className="text-2xl font-bold">
+                <Link href="/" className="text-2xl font-bold text-white">
                     WebTools
                 </Link>
                 <div className="hidden md:flex space-x-4 items-center">
