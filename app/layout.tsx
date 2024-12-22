@@ -16,8 +16,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "WebTools - Home",
-  description: "A collection of web based tools.",
+  title: "WebTools",
+  description: "A collection of high quality, free, web based tools.",
 };
 
 export default function RootLayout({
