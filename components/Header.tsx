@@ -4,8 +4,10 @@ import { Menu, X, ChevronDown } from 'lucide-react'
 import Link from 'next/link'
 
 const tools = [
-    { name: 'QR Code', href: '/tools/qr' },
     { name: 'WebP Converter', href: '/tools/webp' },
+    { name: 'JS Minifier', href: '/minify/js' },
+    { name: 'CSS Minifier', href: '/minify/css' },
+    { name: 'QR Code', href: '/tools/qr' },
     { name: 'Typing Test', href: '/tools/typing-test' },
 ]
 
@@ -109,7 +111,7 @@ export default function Header() {
             </nav>
             {isOpen && (
                 <div ref={mobileMenuRef} className={`md:hidden text-white ${scrolled ? 'bg-gray-800' : 'bg-gray-800 bg-opacity-90'}`}>
-                    <Link href="/" className="block py-2 px-4 text-sm hover:bg-gray-700" onClick={closeMobileMenuAndDropdown}>
+                    <Link href="/" className="block py-4 px-6 text-md hover:bg-gray-700" onClick={closeMobileMenuAndDropdown}>
                         Home
                     </Link>
                     <div className="relative">
@@ -134,7 +136,7 @@ export default function Header() {
                             </div>
                         )}
                     </div>
-                    <Link href="/about" className="block py-2 px-4 text-sm hover:bg-gray-700" onClick={closeMobileMenuAndDropdown}>
+                    <Link href="/about" className="block py-4 px-6 text-md hover:bg-gray-700" onClick={closeMobileMenuAndDropdown}>
                         About
                     </Link>
                 </div>
