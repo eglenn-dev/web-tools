@@ -103,7 +103,7 @@ export default function Header() {
                     </div>
                 </div>
                 <button className={`md:hidden ${scrolled ? 'text-white' : 'text-gray-200'}`} onClick={() => setIsOpen(!isOpen)}>
-                    {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+                    {isOpen ? <X className="h-10 w-10" /> : <Menu className="h-10 w-10" />}
                 </button>
             </nav>
             {isOpen && (
