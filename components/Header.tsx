@@ -80,6 +80,7 @@ export default function Header() {
                         <button
                             className={`flex items-center hover:text-gray-300 ${scrolled ? 'text-white' : 'text-gray-200'}`}
                             onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                            onMouseEnter={() => setIsDropdownOpen(true)}
                         >
                             Tools <ChevronDown className="ml-1 h-4 w-4" />
                         </button>
