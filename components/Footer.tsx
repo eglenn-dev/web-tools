@@ -4,7 +4,7 @@ export default function Footer() {
             <div className="container mx-auto px-4 text-center">
                 <p>&copy; {new Date().getFullYear()} WebTools. All rights reserved.</p>
                 <div className="mt-4">
-                    <a href="https://eglenn.dev" className="text-gray-400 hover:text-white mx-2">
+                    <a href="https://eglenn.dev" target="_blank" className="text-gray-400 hover:text-white mx-2">
                         Tools Developed by Ethan Glenn
                     </a>
                 </div>
