@@ -101,9 +101,6 @@ export default function Header() {
                             </div>
                         )}
                     </div>
-                    <Link href="/about" className={`hover:text-gray-300 ${scrolled ? 'text-white' : 'text-gray-200'}`} onClick={closeMenu}>
-                        About
-                    </Link>
                 </div>
                 <button className={`md:hidden ${scrolled ? 'text-white' : 'text-gray-200'}`} onClick={() => setIsOpen(!isOpen)}>
                     {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -136,9 +133,6 @@ export default function Header() {
                             </div>
                         )}
                     </div>
-                    <Link href="/about" className="block py-4 px-6 text-md hover:bg-gray-700" onClick={closeMobileMenuAndDropdown}>
-                        About
-                    </Link>
                 </div>
             )}
         </header>
