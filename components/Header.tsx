@@ -13,6 +13,7 @@ export default function Header() {
     const [isOpen, setIsOpen] = useState(false)
     const [isDropdownOpen, setIsDropdownOpen] = useState(false)
     const [scrolled, setScrolled] = useState(false)
+    const [isMobileDropdownOpen, setIsMobileDropdownOpen] = useState(false);
     const dropdownRef = useRef<HTMLDivElement>(null);
     const mobileMenuRef = useRef<HTMLDivElement>(null);
 
@@ -59,6 +60,7 @@ export default function Header() {
     const closeMobileMenuAndDropdown = () => {
         setIsOpen(false);
         setIsDropdownOpen(false);
+        setIsMobileDropdownOpen(false);
     };
 
 
@@ -111,18 +113,18 @@ export default function Header() {
                     </Link>
                     <div className="relative">
                         <button
-                            className="w-full text-left py-2 px-4 text-sm hover:bg-gray-700 flex justify-between items-center"
-                            onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                            className="w-full text-left py-4 px-6 text-base hover:bg-gray-700 flex justify-between items-center"
+                            onClick={() => setIsMobileDropdownOpen(!isMobileDropdownOpen)}
                         >
-                            Tools <ChevronDown className="h-4 w-4" />
+                            Tools <ChevronDown className={`h-5 w-5 transition-transform ${isMobileDropdownOpen ? 'rotate-180' : ''}`} />
                         </button>
-                        {isDropdownOpen && (
+                        {isMobileDropdownOpen && (
                             <div className="bg-gray-900 py-2">
                                 {tools.map((tool) => (
                                     <Link
                                         key={tool.name}
                                         href={tool.href}
-                                        className="block py-2 px-8 text-sm hover:bg-gray-700"
+                                        className="block py-3 px-10 text-base hover:bg-gray-700"
                                         onClick={closeMobileMenuAndDropdown}
                                     >
                                         {tool.name}
