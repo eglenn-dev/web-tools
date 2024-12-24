@@ -5,9 +5,10 @@ import Link from 'next/link'
 
 const tools = [
     { name: 'WebP Converter', href: '/tools/webp' },
+    { name: 'QR Code', href: '/tools/qr' },
+    { name: 'CSS Gradient', href: '/tools/css-gradient' },
     { name: 'JS Minifier', href: '/minify/js' },
     { name: 'CSS Minifier', href: '/minify/css' },
-    { name: 'QR Code', href: '/tools/qr' },
     { name: 'Typing Test', href: '/tools/typing-test' },
 ]
 
