@@ -6,7 +6,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
-import { Download } from 'lucide-react';
+import { Download } from "lucide-react";
 
 export default function QRCodeMaker() {
     const [qrCodeUrl, setQrCodeUrl] = useState("https://google.com");
@@ -30,12 +30,14 @@ export default function QRCodeMaker() {
     }, [qrCodeUrl, size, light, dark]);
 
     return (
-        <div className="container mx-auto py-12">
+        <div className="container mx-auto py-12 bg-white rounded-xl">
             <Card className="max-w-4xl mx-auto">
                 <CardContent>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                         <div className="space-y-4">
-                            <h2 className="text-2xl pt-4 font-semibold">Settings</h2>
+                            <h2 className="text-2xl pt-4 font-semibold">
+                                Settings
+                            </h2>
                             <div className="space-y-2">
                                 <Label htmlFor="size">Size (px)</Label>
                                 <Input
@@ -65,22 +67,33 @@ export default function QRCodeMaker() {
                                     placeholder="Enter valid url"
                                     defaultValue="https://google.com"
                                     onChange={(e) => {
-                                        if (e.target.value.includes("http://") || e.target.value.includes("https://")) {
+                                        if (
+                                            e.target.value.includes(
+                                                "http://"
+                                            ) ||
+                                            e.target.value.includes("https://")
+                                        ) {
                                             setQrCodeUrl(e.target.value);
                                         } else {
-                                            setQrCodeUrl("https://" + e.target.value);
+                                            setQrCodeUrl(
+                                                "https://" + e.target.value
+                                            );
                                         }
                                     }}
                                 />
                             </div>
                             <div className="grid grid-cols-2 gap-4">
                                 <div className="space-y-2">
-                                    <Label htmlFor="light">Background Color</Label>
+                                    <Label htmlFor="light">
+                                        Background Color
+                                    </Label>
                                     <Input
                                         id="light"
                                         type="color"
                                         defaultValue="#ffffff"
-                                        onChange={(e) => setLight(e.target.value)}
+                                        onChange={(e) =>
+                                            setLight(e.target.value)
+                                        }
                                     />
                                 </div>
                                 <div className="space-y-2">
@@ -89,7 +102,9 @@ export default function QRCodeMaker() {
                                         id="dark"
                                         type="color"
                                         defaultValue="#000000"
-                                        onChange={(e) => setDark(e.target.value)}
+                                        onChange={(e) =>
+                                            setDark(e.target.value)
+                                        }
                                     />
                                 </div>
                             </div>
@@ -104,8 +119,21 @@ export default function QRCodeMaker() {
                         </div>
                         <div className="flex items-center justify-center bg-gray-100 rounded-lg p-4">
                             {outputUrl && (
-                                <div style={{ height: size, width: size, maxWidth: "300px", maxHeight: "300px" }}>
-                                    <Image src={outputUrl} alt="QR Code" width={size} height={size} className="rounded-lg" />
+                                <div
+                                    style={{
+                                        height: size,
+                                        width: size,
+                                        maxWidth: "300px",
+                                        maxHeight: "300px",
+                                    }}
+                                >
+                                    <Image
+                                        src={outputUrl}
+                                        alt="QR Code"
+                                        width={size}
+                                        height={size}
+                                        className="rounded-lg"
+                                    />
                                 </div>
                             )}
                         </div>
@@ -115,4 +143,3 @@ export default function QRCodeMaker() {
         </div>
     );
 }
-

@@ -1,40 +1,47 @@
-'use client'
+"use client";
 
-import { useState, useCallback } from 'react'
-import { Textarea } from "@/components/ui/textarea"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import * as csso from 'csso'
+import { useState, useCallback } from "react";
+import { Textarea } from "@/components/ui/textarea";
+import { Button } from "@/components/ui/button";
+import {
+    Card,
+    CardContent,
+    CardFooter,
+    CardHeader,
+    CardTitle,
+} from "@/components/ui/card";
+import * as csso from "csso";
 
 export default function CSSMinifier() {
-    const [input, setInput] = useState('')
-    const [output, setOutput] = useState('')
-    const [isMinifying, setIsMinifying] = useState(false)
+    const [input, setInput] = useState("");
+    const [output, setOutput] = useState("");
+    const [isMinifying, setIsMinifying] = useState(false);
 
     const handleMinify = useCallback(() => {
-        setIsMinifying(true)
+        setIsMinifying(true);
         try {
             const minified = csso.minify(input, {
                 restructure: true,
-                comments: false
-            }).css
-            setOutput(minified)
+                comments: false,
+            }).css;
+            setOutput(minified);
         } catch (error) {
-            console.error('Minification error:', error)
-            setOutput('Error: Invalid CSS code')
+            console.error("Minification error:", error);
+            setOutput("Error: Invalid CSS code");
         } finally {
-            setIsMinifying(false)
+            setIsMinifying(false);
         }
-    }, [input])
+    }, [input]);
 
     const handleCopy = useCallback(() => {
-        navigator.clipboard.writeText(output)
-            .then(() => alert('Copied to clipboard!'))
-            .catch(err => console.error('Failed to copy: ', err))
-    }, [output])
+        navigator.clipboard
+            .writeText(output)
+            .then(() => alert("Copied to clipboard!"))
+            .catch((err) => console.error("Failed to copy: ", err));
+    }, [output]);
 
     return (
-        <Card className="w-full max-w-3xl mx-auto">
+        <Card className="w-full max-w-3xl p-2 mx-auto">
             <CardHeader>
                 <CardTitle>CSS Minifier</CardTitle>
             </CardHeader>
@@ -47,7 +54,7 @@ export default function CSSMinifier() {
                     aria-label="CSS Input"
                 />
                 <Button onClick={handleMinify} disabled={isMinifying}>
-                    {isMinifying ? 'Minifying...' : 'Minify'}
+                    {isMinifying ? "Minifying..." : "Minify"}
                 </Button>
                 <Textarea
                     placeholder="Minified output will appear here"
@@ -63,5 +70,5 @@ export default function CSSMinifier() {
                 </Button>
             </CardFooter>
         </Card>
-    )
+    );
 }

@@ -1,47 +1,47 @@
-'use client'
-import { useState, useRef } from 'react'
-import { Button } from "@/components/ui/button"
-import { Textarea } from "@/components/ui/textarea"
-import { Label } from "@/components/ui/label"
+"use client";
+import { useState, useRef } from "react";
+import { Button } from "@/components/ui/button";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
 
 export default function Base64ImageConverter() {
-    const [base64String, setBase64String] = useState<string>('')
-    const [imagePreview, setImagePreview] = useState<string | null>(null)
-    const fileInputRef = useRef<HTMLInputElement>(null)
+    const [base64String, setBase64String] = useState<string>("");
+    const [imagePreview, setImagePreview] = useState<string | null>(null);
+    const fileInputRef = useRef<HTMLInputElement>(null);
 
     const encodeImage = (file: File) => {
-        const reader = new FileReader()
+        const reader = new FileReader();
         reader.onloadend = () => {
-            const base64 = reader.result as string
-            setBase64String(base64.split(',')[1])
-            setImagePreview(base64)
-        }
-        reader.readAsDataURL(file)
-    }
+            const base64 = reader.result as string;
+            setBase64String(base64.split(",")[1]);
+            setImagePreview(base64);
+        };
+        reader.readAsDataURL(file);
+    };
 
     const decodeImage = () => {
         try {
-            const img = `data:image/png;base64,${base64String}`
-            setImagePreview(img)
+            const img = `data:image/png;base64,${base64String}`;
+            setImagePreview(img);
         } catch (error) {
-            console.error('Error decoding base64 string:', error)
-            alert('Invalid base64 string')
+            console.error("Error decoding base64 string:", error);
+            alert("Invalid base64 string");
         }
-    }
+    };
 
     const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const file = event.target.files?.[0]
+        const file = event.target.files?.[0];
         if (file) {
-            encodeImage(file)
+            encodeImage(file);
         }
-    }
+    };
 
     const handleUploadClick = () => {
-        fileInputRef.current?.click()
-    }
+        fileInputRef.current?.click();
+    };
 
     return (
-        <div className="max-w-xl w-full mx-auto p-4 space-y-4">
+        <div className="max-w-xl bg-white w-full mx-auto p-8 rounded-xl space-y-4">
             <div>
                 <Button onClick={handleUploadClick}>Upload Image</Button>
                 <input
@@ -71,11 +71,16 @@ export default function Base64ImageConverter() {
 
             {imagePreview && (
                 <div>
-                    <h2 className="text-xl font-semibold mb-2">Image Preview</h2>
-                    <img src={imagePreview} alt="Decoded" className="max-w-full h-auto" />
+                    <h2 className="text-xl font-semibold mb-2">
+                        Image Preview
+                    </h2>
+                    <img
+                        src={imagePreview}
+                        alt="Decoded"
+                        className="max-w-full h-auto"
+                    />
                 </div>
             )}
         </div>
-    )
+    );
 }
-

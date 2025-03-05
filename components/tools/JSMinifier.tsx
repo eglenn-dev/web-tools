@@ -1,14 +1,20 @@
-'use client'
-import { useState, useCallback } from 'react'
-import { Textarea } from "@/components/ui/textarea"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { minify } from 'terser'
+"use client";
+import { useState, useCallback } from "react";
+import { Textarea } from "@/components/ui/textarea";
+import { Button } from "@/components/ui/button";
+import {
+    Card,
+    CardContent,
+    CardFooter,
+    CardHeader,
+    CardTitle,
+} from "@/components/ui/card";
+import { minify } from "terser";
 
 export default function JSMinifier() {
-    const [input, setInput] = useState('')
-    const [output, setOutput] = useState('')
-    const [isMinifying, setIsMinifying] = useState(false)
+    const [input, setInput] = useState("");
+    const [output, setOutput] = useState("");
+    const [isMinifying, setIsMinifying] = useState(false);
 
     const handleMinify = useCallback(async () => {
         setIsMinifying(true);
@@ -31,23 +37,24 @@ export default function JSMinifier() {
                     side_effects: true,
                 },
             });
-            setOutput(result.code || '');
+            setOutput(result.code || "");
         } catch (error) {
-            console.error('Minification error:', error);
-            setOutput('Error: Invalid JavaScript code');
+            console.error("Minification error:", error);
+            setOutput("Error: Invalid JavaScript code");
         } finally {
             setIsMinifying(false);
         }
     }, [input]);
 
     const handleCopy = useCallback(() => {
-        navigator.clipboard.writeText(output)
-            .then(() => alert('Copied to clipboard!'))
-            .catch(err => console.error('Failed to copy: ', err))
-    }, [output])
+        navigator.clipboard
+            .writeText(output)
+            .then(() => alert("Copied to clipboard!"))
+            .catch((err) => console.error("Failed to copy: ", err));
+    }, [output]);
 
     return (
-        <Card className="w-full max-w-3xl mx-auto">
+        <Card className="w-full p-2 bg-white rounded-xl max-w-3xl mx-auto">
             <CardHeader>
                 <CardTitle>JavaScript Minifier</CardTitle>
             </CardHeader>
@@ -59,7 +66,7 @@ export default function JSMinifier() {
                     className="min-h-[200px]"
                 />
                 <Button onClick={handleMinify} disabled={isMinifying}>
-                    {isMinifying ? 'Minifying...' : 'Minify'}
+                    {isMinifying ? "Minifying..." : "Minify"}
                 </Button>
                 <Textarea
                     placeholder="Minified output will appear here"
@@ -74,6 +81,5 @@ export default function JSMinifier() {
                 </Button>
             </CardFooter>
         </Card>
-    )
+    );
 }
-
